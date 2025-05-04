@@ -3,23 +3,41 @@ package com.mycompany.pruebajps;
 import com.mycompany.pruebajps.logica.Alumno;
 import com.mycompany.pruebajps.logica.Carrera;
 import com.mycompany.pruebajps.logica.Controladora;
+import com.mycompany.pruebajps.logica.Materia;
 import java.util.Date;
+import java.util.LinkedList;
 
 public class PruebaJps {
 
     public static void main(String[] args) {
+        
         Controladora control = new Controladora();
         
+        LinkedList<Materia> listaMaterias = new LinkedList<Materia>();
         
-        Carrera carre = new Carrera(1, "Civil");
-        
+        Carrera carre = new Carrera(1, "Sistemas", listaMaterias);
         control.crearCarrera(carre);
         
+        //Crear materias
+        Materia mate1 = new Materia(1,"Matematica", "Cuatrimestral", carre);
+        Materia mate2 = new Materia(2,"Lengua", "Bimestral", carre);
+        Materia mate3 = new Materia(1,"Ingles", "Anual", carre);
         
-        Alumno alu2 = new Alumno(5, "pepito", "gonzales", new Date(), carre);
+        control.crearMateria(mate1);
+        control.crearMateria(mate2);
+        control.crearMateria(mate3);
         
-        /*CREAR UN ALUMNO*/
-        control.crearAlumno(alu2);
+        //Crear arreglo de materias
+        listaMaterias.add(mate1);
+        listaMaterias.add(mate2);
+        listaMaterias.add(mate3);
+        
+        carre.setListaMaterias(listaMaterias);
+        control.editarCarrera(carre);
+        
+        //Crear un alumno
+        Alumno alu = new Alumno(1, "cachi", "galiano", new Date(), carre);
+        control.crearAlumno(alu);
         
         /*ELIMINAR UN ALUMNO*/
         //control.eliminarAlumno(2);
@@ -29,7 +47,7 @@ public class PruebaJps {
         //control.editarAlumno(alu);
         
         
-        Alumno alu = control.traerAlumno(5);
+        Alumno alu2 = control.traerAlumno(1);
         System.out.println("-----------------BUSQUEDA INDIVIDUAL-----------------");
         System.out.println("El alumno es: " + alu.toString());
         System.out.println("Cursa la carrera de: " + alu.getCarre().getNombre());

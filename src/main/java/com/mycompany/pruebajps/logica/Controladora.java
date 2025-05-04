@@ -26,7 +26,8 @@ public class Controladora {
         return controlPersis.traerListaAlumnos();
     }
     
-    //Carrera
+    /***************Carrera*********************/
+    
     public void crearCarrera(Carrera carre){
         controlPersis.crearCarrera(carre);
     }
@@ -45,5 +46,27 @@ public class Controladora {
     
     public ArrayList<Carrera> traerListaCarreras(){
         return controlPersis.traerListaCarreras();
+    }
+    
+    /*******************Materia********************/
+    
+    public void crearMateria(Materia mate){
+        controlPersis.crearMateria(mate);
+    }
+    
+    public void eliminarMateria(int id){
+        controlPersis.eliminarMateria(id);
+    }
+    
+    public void editarMateria(Materia mate){
+        controlPersis.editarMateria(mate);
+    }
+    
+    public Materia traerMateria(int id){
+        return controlPersis.traerMateria(id);
+    }
+    
+    public ArrayList<Materia> traerListaMaterias(){
+        return controlPersis.traerListaMaterias();
     }
 }
